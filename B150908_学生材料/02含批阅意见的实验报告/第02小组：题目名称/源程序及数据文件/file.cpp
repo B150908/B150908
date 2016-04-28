@@ -6,7 +6,7 @@
 
 void printHead( )      /*打印车辆信息的表头*/
 {
-printf("%5s %2s %8s %6s %6s %6s %6s %6s %6s %2s \n","车牌号","车主","车型号","车颜色","违规记录","缴费状态","违规时间","扣分情况","罚款","排名");
+printf("%5s %2s %8s %6s %6s %6s %6s %6s %6s \n","车牌号","车主","车型号","车颜色","违规记录","缴费状态","违规时间","扣分情况","罚款");
 }
 
 void menu( )         /*顶层菜单函数*/
@@ -31,9 +31,8 @@ void menuSearch()    /*5、根据条件查询菜单函数*/
 {
 		printf("######## 1. 按车牌号查询   ########\n");
 		printf("######## 2. 按车主查询     ########\n");
-		printf("######## 3. 按扣分查询     ########\n");
-		printf("######## 4. 车的型号查询   ########\n");
-		printf("######## 5. 车的颜色查询   ########\n");
+		printf("######## 3. 车的型号查询   ########\n");
+		printf("######## 4. 车的颜色查询   ########\n");
 		printf("######## 0. 返回上层菜单   ########\n");
 }
 
@@ -100,18 +99,21 @@ void searchManage(car che[],int n)               /*该函数完成根据条件查询功能*/
 			scanf("%d",&choice);
 			switch(choice)
 			{
-				case 1:   printf("Input a cheliang\'s num will be searched:\n");
-				      scanf("%ld",&s.number);         /*输入待查询车辆的车牌号*/
+				case 1:   printf("Input a chepai\'s number will be searched:\n");
+				      scanf("%s",&s.number);         /*输入待查询车辆的车牌号*/
 					  break;
-				case 2:   printf("Input a cheliang\'s name will be searched:\n");
+				case 2:   printf("Input a chezhu\'s name will be searched:\n");
 				      scanf("%s",s.name);	          /*输入待查询车辆的车主名*/		  
 				      break;   
-				case 3:   printf("Input a rank will be searched:\n");
-				      scanf("%d",&s.rank);          /*输入待查询车辆违规扣分的名次*/
+				case 3:   printf("Input a xinghao will be searched:\n");
+				      scanf("%s",&s.chexing);          /*输入待查询车辆型号*/
+					  break;
+				case 4:   printf("Input a color will be searched:\n");
+				      scanf("%s",&s.color);          /*输入待查询车辆颜色*/
 					  break;
 				case 0:   break;
 			}
-		 	if (choice>=1&&choice<=3)
+		 	if (choice>=1&&choice<=4)
 			{ 
 				findnum=searchche(che,n,s,choice,f);    /*查找的符合条件元素的下标存于f数组中*/
 				if (findnum)				     /*如果查找成功*/
